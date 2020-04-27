@@ -1,0 +1,13 @@
+name: tdiff
+version: 0.1.0
+
+authors:
+  - Edgar Cabrera <edgar.cabrera@pm.me>
+
+targets:
+  tdiff:
+    main: src/tdiff.cr
+
+crystal: 0.34.0
+
+license: MIT
