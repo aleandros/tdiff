@@ -14,6 +14,11 @@ TODO: Write usage instructions here
 
 TODO: Write development instructions here
 
+## TODO
+- [ ] Compare file to STDIN
+- [ ] Compare yamls
+- [ ] Compare json
+
 ## Contributing
 
 1. Fork it (<https://github.com/aleandros/tdiff/fork>)
