@@ -17,16 +17,16 @@ module Tdiff::Core
         results << Result.new(path.clone, comparison.difference)
       when Outcome::InconclusiveHash
         if !left.nil? && !right.nil?
-          compare_hashes(left.as_h, right.as_h, path)
+          compare(left.as_h, right.as_h, path)
         end
-      else Outcome::InconclusiveArray
-      if !left.nil? && !right.nil?
-        compare_arrays(left.as_a, right.as_a, path)
-      end
+      else
+        if !left.nil? && !right.nil?
+          compare(left.as_a, right.as_a, path)
+        end
       end
     end
 
-    private def compare_hashes(left : Hash, right : Hash, path : Array(Segment))
+    private def compare(left : Hash, right : Hash, path : Array(Segment))
       keys = Set(Segment).new
       left.keys.map do |key|
         keys.add(raw_key(key))
@@ -43,7 +43,7 @@ module Tdiff::Core
       end
     end
 
-    private def compare_arrays(left : Array, right : Array, path : Array(Segment))
+    private def compare(left : Array, right : Array, path : Array(Segment))
       size = Math.max(left.size, right.size)
 
       size.times do |i|

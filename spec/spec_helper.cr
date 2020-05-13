@@ -1,6 +1,7 @@
 require "spec"
 require "../src/arguments/*"
 require "../src/core/*"
+require "../src/presentation/*"
 require "../src/tree"
 require "../src/exception"
 
