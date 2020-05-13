@@ -1,6 +1,6 @@
 # tdiff
 
-A tool for handling different
+A tool for comparing Tree like files, specifically JSON and YAML
 
 ## Installation
 
@@ -8,16 +8,25 @@ TODO: Write installation instructions here
 
 ## Usage
 
-TODO: Write usage instructions here
+Usage: `tdiff [OPTION]... [SOURCE] <TARGET>`
+
+Identifies the differences between two tree-like file structures.
+
+If `<TARGET>` is not present, input is assumed to come from STDIN.
+At this moment, only JSON and YAML are supported.
 
 ## Development
 
 TODO: Write development instructions here
 
 ## TODO
-- [ ] Compare file to STDIN
-- [ ] Compare yamls
-- [ ] Compare json
+- [x] Compare file to STDIN
+- [x] Compare yamls
+- [x] Compare json
+- [ ] Presentation layer
+- [ ] Support more array comparison algorithms
+- [ ] Add auto-publish via github actions and installation instructions
+- [ ] Fix file permission testing in CI
 
 ## Contributing
 

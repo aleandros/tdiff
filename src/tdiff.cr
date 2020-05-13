@@ -4,6 +4,7 @@ require "option_parser"
 
 require "./exception"
 require "./arguments/extractor"
+require "./core/comparator"
 
 # Tdiff is a CLI utility for comparing tree-like files (json/yaml).
 module Tdiff
@@ -47,9 +48,12 @@ module Tdiff
         Tdiff.fail_with_help("too many arguments given", parser)
       else
         begin
-          extractor = Tdiff::Arguments::Extractor.new(args[0], args[1]?)
-          puts extractor.source.tree.as_h?
-          puts extractor.target.tree.as_h?
+          extractor = Arguments::Extractor.new(args[0], args[1]?)
+          comparator = Core::Comparator.new
+          comparator.compare(extractor.source.tree, extractor.target.tree)
+          comparator.results.each do |result|
+            puts result
+          end
         rescue ex : Tdiff::Exception
           STDERR.puts "ERROR: #{ex.message}"
           exit 1
