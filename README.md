@@ -4,7 +4,20 @@ A tool for comparing Tree like files, specifically JSON and YAML
 
 ## Installation
 
-TODO: Write installation instructions here
+Right now, simply go to the [releases page](https://github.com/aleandros/tdiff/releases) and download
+the latest binary to your prefered directory in your path (like `/usr/local/bin`). 
+
+Right now I'm unable to create a statically linked binary for OSX and Windows (help wanted!).
+
+If you want to build it for your platform, download crystal and compile it. For example, in OSX:
+
+```
+$ brew install crystal
+$ git clone https://github.com/aleandros/tdiff/
+$ cd tdiff && shards build --production --release --no-debug
+```
+
+The binary will live in `bin/tdiff`. You can move it to your path after that.
 
 ## Usage
 
@@ -34,17 +47,28 @@ $ tdiff shard.yml changed.yml
 
 ## Development
 
-TODO: Write development instructions here
+This is a pretty standard crystal project. So install crystal with your prefered method.
+
+First install dependencies with `shards install`.
+
+Remember to run:
+
+* Tests with `crystal spec`
+* Format with `crystal tool format`
+* Ameba checks with `bin/ameba`
+
+This will be checked by CI but still save yourself some time.
 
 ## TODO
 - [x] Compare file to STDIN
 - [x] Compare yamls
 - [x] Compare json
 - [x] Presentation layer
+- [x] Add auto-publish via github actions and installation instructions
+- [ ] Add portable binaries for OSX and Windows
 - [ ] Support more array comparison algorithms
-- [ ] Add auto-publish via github actions and installation instructions
 - [ ] Fix file permission testing in CI
-- [ ] Allow presentation-level customizations
+- [ ] Allow presentation-level customizations at runtime
 
 ## Contributing
 
