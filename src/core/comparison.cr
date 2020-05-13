@@ -61,6 +61,7 @@ module Tdiff::Core
     end
 
     private def type(tree)
+      # TODO: This should be an Enum
       case tree
       when .nil?
         :missing

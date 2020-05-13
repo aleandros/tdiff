@@ -15,6 +15,23 @@ Identifies the differences between two tree-like file structures.
 If `<TARGET>` is not present, input is assumed to come from STDIN.
 At this moment, only JSON and YAML are supported.
 
+An exit status of 1 indicates an error in the program.
+An exit status of 127 indicates that there are differences between source
+and target.
+An exit status of 0 indicates no changes
+
+Example output:
+
+```
+$ tdiff shard.yml changed.yml
+* me: tdiff -> tdiffo
+* authors/0: Edgar Cabrera <edgar.cabrera@pm.me> -> Edgar Cobrera <edgar.cabrera@pm.me>
+* crystal: changed type from string to float
+- license: MIT
+* development_dependencies/ameba/github: crystal-ameba/ameba -> crystal-ameba/amoeba
++ rawr: true
+```
+
 ## Development
 
 TODO: Write development instructions here
@@ -23,10 +40,11 @@ TODO: Write development instructions here
 - [x] Compare file to STDIN
 - [x] Compare yamls
 - [x] Compare json
-- [ ] Presentation layer
+- [x] Presentation layer
 - [ ] Support more array comparison algorithms
 - [ ] Add auto-publish via github actions and installation instructions
 - [ ] Fix file permission testing in CI
+- [ ] Allow presentation-level customizations
 
 ## Contributing
 
