@@ -3,7 +3,7 @@ require "./input_parser"
 
 abstract class Tdiff::Arguments::Input
   property location : String | IO
-  @tree : Tdiff::Tree | Nil = nil
+  @tree : Tdiff::Tree
 
   def initialize(@location)
   end

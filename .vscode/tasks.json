@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run specs",
+            "command": "crystal",
+            "args": ["spec", "--order", "random", "--error-on-warnings"],
+            "detail": "Run specs for the whole project",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+            }
+        }
+    ]
+}
