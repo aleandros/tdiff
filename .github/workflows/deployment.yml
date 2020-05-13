@@ -1,0 +1,41 @@
+name: Deployment
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  dist_linux:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:latest-alpine
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: |
+        shards build --production --release --static --no-debug
+        strip ./bin/tdiff
+    - name: Upload
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./bin/tdiff
+        asset_name: tidff-${{ github.event.release.tag_name }}-linux-x86_64
+        asset_content_type: binary/octet-stream
+  deploy_docs:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build
+        run: crystal docs
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@2.0.1
+        env:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
