@@ -65,7 +65,8 @@ This will be checked by CI but still save yourself some time.
 - [x] Compare json
 - [x] Presentation layer
 - [x] Add auto-publish via github actions and installation instructions
-- [ ] Add portable binaries for OSX and Windows
+- [ ] Add portable binaries for OSX (or homebrew package)
+- [x] Add portable binary for Windows
 - [ ] Support more array comparison algorithms
 - [x] Fix file permission testing in CI
 - [ ] Allow presentation-level customizations at runtime
