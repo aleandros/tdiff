@@ -26,20 +26,20 @@ jobs:
         run: ./bin/ameba
   test_latest:
     runs-on: ubuntu-latest
-    container:
-      image: crystallang/crystal:latest-alpine
     steps:
       - uses: actions/checkout@v2
+      - uses: oprypin/install-crystal@v1
       - name: Build
         run: shards build --production
       - name: Specs
         run: crystal spec --order random --error-on-warnings
   test_nightly:
     runs-on: ubuntu-latest
-    container:
-      image: crystallang/crystal:nightly-alpine
     steps:
       - uses: actions/checkout@v2
+      - uses: oprypin/install-crystal@v1
+        with:
+          crystal: nightly
       - name: Build
         run: shards build --production
       - name: Specs

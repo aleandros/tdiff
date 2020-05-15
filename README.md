@@ -67,7 +67,7 @@ This will be checked by CI but still save yourself some time.
 - [x] Add auto-publish via github actions and installation instructions
 - [ ] Add portable binaries for OSX and Windows
 - [ ] Support more array comparison algorithms
-- [ ] Fix file permission testing in CI
+- [x] Fix file permission testing in CI
 - [ ] Allow presentation-level customizations at runtime
 
 ## Contributing

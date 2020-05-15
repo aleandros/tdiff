@@ -45,9 +45,7 @@ describe Tdiff::Arguments::Extractor do
       tempfile.delete
     end
 
-    # TODO: Fix this two tests for CI, or eliminate them
-    # They likely break due to the container running with the root user
-    pending "should fail if source is not readable" do
+    it "should fail if source is not readable" do
       source = File.tempfile
       target = File.tempfile
       File.chmod(source.path, 0)
@@ -58,7 +56,7 @@ describe Tdiff::Arguments::Extractor do
       target.delete
     end
 
-    pending "should fail if target is not readable" do
+    it "should fail if target is not readable" do
       source = File.tempfile
       target = File.tempfile
       File.chmod(target.path, 0)
