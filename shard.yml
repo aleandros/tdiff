@@ -1,12 +1,12 @@
 name: tdiff
-version: 0.1.0
+version: 0.2.0
 
 authors:
   - Edgar Cabrera <edgar.cabrera@pm.me>
 
 targets:
   tdiff:
-    main: src/tdiff.cr
+    main: main.cr
 
 crystal: 0.34.0
 

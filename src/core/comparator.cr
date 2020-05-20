@@ -5,11 +5,17 @@ require "./comparison"
 module Tdiff::Core
   class Comparator
     getter results : Array(Result)
+    getter left_tree : Tdiff::Tree
+    getter right_tree : Tdiff::Tree
 
-    def initialize(@results = [] of Result)
+    def initialize(@left_tree, @right_tree, @results = [] of Result)
     end
 
-    def compare(left : Tdiff::Tree, right : Tdiff::Tree, path = [] of Segment)
+    def compare
+      compare(left_tree, right_tree)
+    end
+
+    private def compare(left : Tdiff::Tree, right : Tdiff::Tree, path = [] of Segment)
       comparison = Comparison.new(left, right)
       case comparison.outcome
       when Outcome::Equal

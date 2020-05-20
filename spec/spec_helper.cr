@@ -1,9 +1,5 @@
 require "spec"
-require "../src/arguments/*"
-require "../src/core/*"
-require "../src/presentation/*"
-require "../src/tree"
-require "../src/exception"
+require "../src/*"
 
 class DummyIO < IO::Memory
   property is_tty : Bool = true
