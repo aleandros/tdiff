@@ -22,6 +22,20 @@ jobs:
         asset_path: ./tdiff.exe
         asset_name: tdiff-${{ github.event.release.tag_name }}-windows-x86_64.exe
         asset_content_type: binary/octet-stream
+
+  dist_linux_snapcraft:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Snapcraft
+      uses: samuelmeuli/action-snapcraft@v1
+      with:
+        snapcraft_token: ${{ secrets.SNAPCRAFT_TOKEN }}
+    - name: Build Snap
+      run: snapcraft
+    - name: Publish snap
+      run: snapcraft push --release=beta *.snap
+
   dist_linux:
     runs-on: ubuntu-latest
     container:

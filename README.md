@@ -9,13 +9,18 @@ A tool for comparing Tree like files, specifically JSON and YAML
 ## Installation
 
 Right now, simply go to the [releases page](https://github.com/aleandros/tdiff/releases) and download
-the latest binary to your prefered directory in your path (like `/usr/local/bin`). 
+the latest binary to your prefered directory in your path (like `/usr/local/bin`). This applies for both
+windows and linux
 
-Right now I'm unable to create a statically linked binary for OSX and Windows (help wanted!).
+If you have `snap` on your system, you can install it with
 
-If you want to build it for your platform, download crystal and compile it. For example, in OSX:
-
+```shell
+$ sudo snap install --beta tdiff # I hope to be able to consider it out of beta soon
 ```
+
+If you want to build it for your platform (specifically, OSX), download crystal and compile it. For example, in OSX:
+
+```shell
 $ brew install crystal
 $ git clone https://github.com/aleandros/tdiff/
 $ cd tdiff && shards build --production --release --no-debug
@@ -95,7 +100,7 @@ This will be checked by CI but still save yourself some time.
 - [x] Presentation layer
 - [x] Add auto-publish via github actions and installation instructions
 - [ ] Add portable binaries for OSX (or homebrew package)
-- [ ] Publish as snap package
+- [x] Publish as snap package
 - [x] Add portable binary for Windows
 - [ ] Support more array comparison algorithms
 - [x] Fix file permission testing in CI
