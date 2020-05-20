@@ -14,8 +14,8 @@ module Tdiff::Core
       b:
         c: 2
       YAML
-      comparator = Comparator.new
-      comparator.compare(tree_1, tree_2)
+      comparator = Comparator.new(tree_1, tree_2)
+      comparator.compare
       comparator.results.size.should eq 3
     end
 
@@ -28,8 +28,8 @@ module Tdiff::Core
       1: 3
       true: 1
       YAML
-      comparator = Comparator.new
-      comparator.compare(tree_1, tree_2)
+      comparator = Comparator.new(tree_1, tree_2)
+      comparator.compare
       comparator.results.size.should eq 3
     end
 
@@ -40,8 +40,8 @@ module Tdiff::Core
       tree_2 = as_tree <<-YAML
       0.1: 2
       YAML
-      comparator = Comparator.new
-      comparator.compare(tree_1, tree_2)
+      comparator = Comparator.new(tree_1, tree_2)
+      comparator.compare
       comparator.results.size.should eq 1
     end
 
@@ -57,8 +57,8 @@ module Tdiff::Core
         - a
         - 1
       YAML
-      comparator = Comparator.new
-      comparator.compare(tree_1, tree_2)
+      comparator = Comparator.new(tree_1, tree_2)
+      comparator.compare
       comparator.results.size.should eq 2
     end
   end

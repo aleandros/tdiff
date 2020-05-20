@@ -1,5 +1,9 @@
 # tdiff
 
+[![Built with Crystal](https://img.shields.io/badge/built%20with-crystal-000000.svg?style=flat-square)](https://crystal-lang.org/)
+[![CI](https://github.com/aleandros/tdiff/workflows/CI/badge.svg)](https://github.com/aleandros/tdiff/actions?query=workflow%3ACI)
+[![Latest release](https://img.shields.io/github/release/aleandros/tdiff.svg)](https://github.com/aleandros/tdiff/releases)
+
 A tool for comparing Tree like files, specifically JSON and YAML
 
 ## Installation
@@ -19,7 +23,7 @@ $ cd tdiff && shards build --production --release --no-debug
 
 The binary will live in `bin/tdiff`. You can move it to your path after that.
 
-## Usage
+## Usage as a binary
 
 Usage: `tdiff [OPTION]... [SOURCE] <TARGET>`
 
@@ -35,7 +39,7 @@ An exit status of 0 indicates no changes
 
 Example output:
 
-```
+```shell
 $ tdiff shard.yml changed.yml
 * me: tdiff -> tdiffo
 * authors/0: Edgar Cabrera <edgar.cabrera@pm.me> -> Edgar Cobrera <edgar.cabrera@pm.me>
@@ -44,6 +48,31 @@ $ tdiff shard.yml changed.yml
 * development_dependencies/ameba/github: crystal-ameba/ameba -> crystal-ameba/amoeba
 + rawr: true
 ```
+
+## Usage as a shard
+
+Add it to your application shards:
+
+```yaml
+dependencies:
+  tdiff:
+    github: aleandros/tdiff
+```
+
+It just requires a couple of IO objects, containing the YAML or JSON data, 
+and returns a list of `Tdiff:Core::Result` objects.
+
+```crystal
+require 'tdiff'
+
+comparator = Tdiff.compare(File.open('target_1.yml'), File.open('target_2.yml'))
+comparator.compare
+comparator.results.each do |result|
+  puts "#{result.path.join(".")}: #{result.difference.reason}"
+end
+```
+
+If any of the inputs cannot be parsed, this method will raise a `Tdiff::Exception` error.
 
 ## Development
 
@@ -66,10 +95,12 @@ This will be checked by CI but still save yourself some time.
 - [x] Presentation layer
 - [x] Add auto-publish via github actions and installation instructions
 - [ ] Add portable binaries for OSX (or homebrew package)
+- [ ] Publish as snap package
 - [x] Add portable binary for Windows
 - [ ] Support more array comparison algorithms
 - [x] Fix file permission testing in CI
 - [ ] Allow presentation-level customizations at runtime
+- [x] Allow `Tdiff::Core` to be used as a library
 
 ## Contributing
 
