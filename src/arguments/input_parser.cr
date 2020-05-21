@@ -9,11 +9,15 @@ class Tdiff::Arguments::InputParser
   def parse : Tdiff::Tree
     tree : Tdiff::Tree | Nil = nil
 
-    input.open do |io|
-      tree = JSON.parse io
+    begin
+      input.open do |io|
+        tree = JSON.parse io
+      end
     rescue JSON::ParseException
       begin
-        tree = YAML.parse io
+        input.open do |io|
+          tree = YAML.parse io
+        end
       rescue YAML::ParseException
         raise Tdiff::Exception.new("cannot parse input '#{input.location}'")
       end
