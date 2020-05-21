@@ -31,8 +31,9 @@ jobs:
       uses: samuelmeuli/action-snapcraft@v1
       with:
         snapcraft_token: ${{ secrets.SNAPCRAFT_TOKEN }}
+        use_lxd: true
     - name: Build Snap
-      run: snapcraft
+      run: sudo snapcraft --use-lxd
     - name: Publish snap
       run: snapcraft push --release=beta *.snap
 
