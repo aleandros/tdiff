@@ -45,13 +45,15 @@ An exit status of 0 indicates no changes
 Example output:
 
 ```shell
-$ tdiff shard.yml changed.yml
-* me: tdiff -> tdiffo
-* authors/0: Edgar Cabrera <edgar.cabrera@pm.me> -> Edgar Cobrera <edgar.cabrera@pm.me>
-* crystal: changed type from string to float
+$ tdiff shard.yml shard.lock
+- name: tdiff
+* version: changed type from string to float
+- authors: ["Edgar Cabrera <edgar.cabrera@pm.me>"]
+- targets: {"tdiff" => {"main" => "main.cr"}}
+- crystal: 0.34.0
 - license: MIT
-* development_dependencies/ameba/github: crystal-ameba/ameba -> crystal-ameba/amoeba
-+ rawr: true
+- development_dependencies: {"ameba" => {"github" => "crystal-ameba/ameba", "version" => "~> 0.12.0"}}
++ shards: {"ameba" => {"github" => "crystal-ameba/ameba", "version" => "0.12.1"}}
 ```
 
 ## Usage as a shard
@@ -68,7 +70,7 @@ It just requires a couple of IO objects, containing the YAML or JSON data,
 and returns a list of `Tdiff:Core::Result` objects.
 
 ```crystal
-require 'tdiff'
+require "tdiff"
 
 comparator = Tdiff.compare(File.open('target_1.yml'), File.open('target_2.yml'))
 comparator.compare
