@@ -11,6 +11,8 @@ require "./tree"
 
 # Tdiff is a CLI utility for comparing tree-like files (json/yaml).
 #
+# You can check out the source code at github: https://github.com/aleandros/tdiff
+#
 # There are three main layers to the structure of the application:
 #
 # * `Tdiff::Arguments` is in charge of handling user input and properly parse
@@ -29,7 +31,7 @@ require "./tree"
 # This file serves as an entrypoint for the application, and essentially handles the
 # arguments with OptionParser and connects the aforementioned layers.
 module Tdiff
-  VERSION = "0.2.0"
+  VERSION = "0.2.1"
 
   # This is the main entrypoint for using Tdiff as a library. It just requires a couple of IO
   # objects, containing the YAML or JSON data, and returns a list of `Tdiff:Core::Result` objects.

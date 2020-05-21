@@ -93,6 +93,10 @@ Remember to run:
 
 This will be checked by CI but still save yourself some time.
 
+### Documentation
+
+You can find the documentation [here](https://aleandros.github.io/tdiff/)
+
 ## TODO
 - [x] Compare file to STDIN
 - [x] Compare yamls

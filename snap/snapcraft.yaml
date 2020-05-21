@@ -1,6 +1,6 @@
 name: tdiff
 base: core18
-version: '0.2.0'
+version: '0.2.1'
 summary: CLI application for comparing JSON and YAML files
 description: |
   This program is intended for comparing YAML and/or JSON files, indicating
