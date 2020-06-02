@@ -12,21 +12,19 @@ Right now, simply go to the [releases page](https://github.com/aleandros/tdiff/r
 the latest binary to your prefered directory in your path (like `/usr/local/bin`). This applies for both
 windows and linux
 
+### Using snap on Linux
 If you have `snap` on your system, you can install it with
 
 ```shell
 $ sudo snap install --beta tdiff # I hope to be able to consider it out of beta soon
 ```
 
-If you want to build it for your platform (specifically, OSX), download crystal and compile it. For example, in OSX:
+### Using Homebrew for OSX
 
 ```shell
-$ brew install crystal
-$ git clone https://github.com/aleandros/tdiff/
-$ cd tdiff && shards build --production --release --no-debug
+$ brew tap aleandros/tdiff
+$ brew install tdiff
 ```
-
-The binary will live in `bin/tdiff`. You can move it to your path after that.
 
 ## Usage as a binary
 
