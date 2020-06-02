@@ -103,13 +103,13 @@ You can find the documentation [here](https://aleandros.github.io/tdiff/)
 - [x] Compare json
 - [x] Presentation layer
 - [x] Add auto-publish via github actions and installation instructions
-- [ ] Add portable binaries for OSX (or homebrew package)
+- [x] Add portable binaries for OSX (or homebrew package)
 - [x] Publish as snap package
 - [x] Add portable binary for Windows
-- [ ] Support more array comparison algorithms
 - [x] Fix file permission testing in CI
-- [ ] Allow presentation-level customizations at runtime
 - [x] Allow `Tdiff::Core` to be used as a library
+- [ ] Support more array comparison algorithms
+- [ ] Allow presentation-level customizations at runtime
 
 ## Contributing
 
